@@ -1,15 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule  } from '@angular/forms';
-import { AdminComponent } from './admin/admin.component';
-
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-logincomponent',
+  templateUrl: './logincomponent.component.html',
+  styleUrls: ['./logincomponent.component.css']
 })
-export class AppComponent {
+export class LogincomponentComponent implements OnInit {
+
   title = 'loginapp';
   loginForm: FormGroup;
   loading = false;
@@ -32,8 +31,6 @@ export class AppComponent {
     //     this.router.navigate(['/']);
     // }
   }
-
- 
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -66,12 +63,11 @@ export class AppComponent {
     } 
     console.log(this.selectedOption);
     if(this.selectedOption == "Admin"){
-       
-      this.router.navigate(["/admin"]);
+      this.router.navigateByUrl('/admin');
 
     }else{
      
-      this.router.navigate(["/vendor"]);
+      this.router.navigateByUrl('/vendor');
     }
 
     this.loading = true;

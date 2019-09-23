@@ -4,11 +4,16 @@ import { ReactiveFormsModule }    from '@angular/forms';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
-import { VendorComponent } from './vendor/vendor.component'; 
+import { VendorComponent } from './vendor/vendor.component';
+import { LogincomponentComponent } from './logincomponent/logincomponent.component'; 
 
-const appRoutes: Routes = [
+
+
+const routes: Routes = [
+  { path: '', component: LogincomponentComponent },
   { path: 'admin', component: AdminComponent },
-  { path: 'vendor',      component: VendorComponent }
+  { path: 'vendor', component: VendorComponent },
+  { path: '**', redirectTo:"/"}
 ];
 
 
@@ -17,10 +22,11 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     AdminComponent,
-    VendorComponent
+    VendorComponent,
+    LogincomponentComponent
   ],
   imports: [
-    RouterModule.forRoot([]),
+    RouterModule.forRoot(routes),
     BrowserModule, 
     ReactiveFormsModule
   ],
